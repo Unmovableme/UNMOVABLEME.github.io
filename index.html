@@ -28,16 +28,16 @@
 
     /* MOBILE: gutters + hamburger behavior */
     @media (max-width: 768px){
-      .container{padding:0 16px;}             /* gutter mobile per TUTTE le sezioni */
+      /* Gutter responsive: min 18px, target 5vw, max 28px */
+      .container{padding-left:clamp(18px,5vw,28px);padding-right:clamp(18px,5vw,28px)}
       .brand{font-size:16px;}
       .menu{
         display:none;                          /* nasconde il menu inline su mobile */
-        position:absolute;
-        left:0; right:0; top:100%;
+        position:absolute; left:0; right:0; top:100%;
         background:#fff;
         border-bottom:1px solid #eee;
         box-shadow:0 10px 20px rgba(10,37,64,.08);
-        padding:10px 16px;
+        padding:10px clamp(18px,5vw,28px);
         gap:12px; z-index:900;
         overflow-x:auto; -webkit-overflow-scrolling:touch;
         white-space:nowrap;
@@ -45,6 +45,14 @@
       header.open .menu{display:flex;}         /* mostra il menu quando aperto */
       .menu a{display:inline-block;padding:8px 6px;font-size:16px;white-space:nowrap}
       .nav-toggle{display:block;}              /* mostra il bottone hamburger */
+    }
+    /* Safe-area (iPhone notch): usa il valore maggiore tra gutter e insetto di sicurezza */
+    @supports (padding: max(0px)){
+      @media (max-width:768px){
+        .container{padding-left:max(clamp(18px,5vw,28px),env(safe-area-inset-left));padding-right:max(clamp(18px,5vw,28px),env(safe-area-inset-right))}
+        header .nav{padding-left:max(clamp(18px,5vw,28px),env(safe-area-inset-left));padding-right:max(clamp(18px,5vw,28px),env(safe-area-inset-right))}
+        header.open .menu{padding-left:max(clamp(18px,5vw,28px),env(safe-area-inset-left));padding-right:max(clamp(18px,5vw,28px),env(safe-area-inset-right))}
+      }
     }
 
     /* Hero */
@@ -79,7 +87,7 @@
 <body>
 
   <header id="site-header">
-    <div class="container nav">
+    <div class="nav">
       <div class="brand">Alessandro Immobile Molaro</div>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Apri il menu">
         <span></span><span></span><span></span>
@@ -211,7 +219,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Hamburger open/close
-    const headerEl = document.getElementById('site-header');
+    const headerEl = document.getElementById('site-header') || document.querySelector('header');
     const toggleBtn = headerEl.querySelector('.nav-toggle');
     const links = document.querySelectorAll('#primary-menu a');
 
