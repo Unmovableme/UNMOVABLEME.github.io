@@ -41,10 +41,36 @@ section.alt{background:#FAFAFA}
 .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(10,37,64,.05)}
 
 footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14px}
+
 @media (max-width:900px){
   .hero{flex-direction:column;padding-top:56px}
   .hero h1{font-size:36px}
   .cols-2{grid-template-columns:1fr}
+}
+
+/* Mobile refinements */
+@media (max-width: 680px){
+  .brand{
+    font-size:16px;
+    white-space:nowrap;     /* non andare a capo */
+    line-height:1;
+    letter-spacing:.2px;
+  }
+  .menu{
+    gap:14px;
+    overflow-x:auto;        /* scorrimento orizzontale con swipe */
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;     /* voci su una sola riga */
+  }
+  .menu a{
+    font-size:15px;
+    white-space:nowrap;     /* “Chi sono” non va a capo */
+  }
+}
+@media (max-width: 420px){
+  .menu{ gap:12px; }
+  .menu a{ font-size:14px; }
+  .hero h1{ font-size:32px; }
 }
 </style>
 
@@ -195,9 +221,10 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
       </div>
     </section>
   </main>
-<footer>
-    <div class="container">
-      <div style="text-align:center;margin-bottom:10px;">
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <div style="margin-bottom:10px;">
         <a class="cta" href="#contatti">Prenota una call</a>
       </div>
       © <span id="year"></span> Alessandro Immobile Molaro — Tutti i diritti riservati
