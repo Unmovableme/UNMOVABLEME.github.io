@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://alessandroimmobile.com/">
-  
 <style>
 :root{--navy:#0A2540;--gold:#C7A55B;--muted:#5b5b5b;--bg:#ffffff}
 *{box-sizing:border-box}
@@ -21,10 +20,23 @@ a{color:inherit;text-decoration:none}
 
 header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid #eee;z-index:100}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-.brand{font-weight:700;letter-spacing:.3px;color:var(--navy)}
+.brand{font-weight:700;letter-spacing:.3px;color:var(--navy);white-space:nowrap}
+
 .menu{display:flex;gap:22px;font-size:15px}
 .menu a{opacity:.85}
 .menu a:hover{opacity:1;border-bottom:2px solid var(--gold)}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle{display:none;background:none;border:none;font-size:28px;line-height:1;color:var(--navy);cursor:pointer;padding:6px 8px;margin-left:10px}
+
+/* Mobile dropdown (hidden by default) */
+@media (max-width:768px){
+  .container{padding:0 16px;}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid #eee;box-shadow:0 8px 18px rgba(10,37,64,.07);padding:10px 16px;gap:12px;z-index:90}
+  .menu a{display:inline-block;padding:8px 6px;font-size:16px;white-space:nowrap}
+  header.open .menu{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-toggle{display:block}
+}
 
 .hero-wrap{background:linear-gradient(180deg,#F4F7FB 0%,#FFFFFF 60%)}
 .hero{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:80px 0 56px}
@@ -40,61 +52,27 @@ section.alt{background:#FAFAFA}
 .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(10,37,64,.05)}
 
-footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14px}
+footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14px;text-align:center}
+footer .cta{background:var(--gold);color:#fff}
 
 @media (max-width:900px){
   .hero{flex-direction:column;padding-top:56px}
   .hero h1{font-size:36px}
   .cols-2{grid-template-columns:1fr}
 }
-
-/* Mobile refinements */
-@media (max-width: 680px){
-  .brand{
-    font-size:16px;
-    white-space:nowrap;     /* non andare a capo */
-    line-height:1;
-    letter-spacing:.2px;
-  }
-  .menu{
-    gap:14px;
-    overflow-x:auto;        /* scorrimento orizzontale con swipe */
-    -webkit-overflow-scrolling:touch;
-    white-space:nowrap;     /* voci su una sola riga */
-  }
-  .menu a{
-    font-size:15px;
-    white-space:nowrap;     /* “Chi sono” non va a capo */
-  }
+@media (max-width:420px){
+  .hero h1{font-size:32px}
+  .hero .subtitle{font-size:16px}
 }
-@media (max-width: 420px){
-  .menu{ gap:12px; }
-  .menu a{ font-size:14px; }
-  .hero h1{ font-size:32px; }
-}
-
-/* Mobile refinements (nav + gutters) */
-@media (max-width: 680px){
-  .container{padding:0 16px;}
-  .brand{font-size:16px; white-space:nowrap; line-height:1; letter-spacing:.2px;}
-  .menu{gap:14px; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; max-width:100%;}
-  .menu a{white-space:nowrap; font-size:15px;}
-}
-@media (max-width: 420px){
-  .menu{gap:12px;}
-  .menu a{font-size:14px;}
-  .hero h1{font-size:32px;}
-  .hero .subtitle{font-size:16px;}
-}
-
 </style>
-
 </head>
 <body>
-  <header>
+
+  <header id="site-header">
     <div class="container nav">
       <div class="brand">Alessandro Immobile Molaro</div>
-      <nav class="menu" aria-label="Navigazione principale">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Apri il menu">☰</button>
+      <nav id="primary-menu" class="menu" aria-label="Navigazione principale">
         <a href="#chi-sono">Chi sono</a>
         <a href="#servizi">Servizi</a>
         <a href="#competenze">Competenze</a>
@@ -106,20 +84,18 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
   </header>
 
   <main>
-    
-<div class="hero-wrap">
-  <section class="hero container" id="home">
-    <div class="hero-text" style="flex:1;min-width:280px;">
-      <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
-      <p class="subtitle">Advisor Indipendente | Business Angel | Commercialista</p>
-      <a class="cta" href="#contatti">Prenota una call</a>
+    <div class="hero-wrap">
+      <section class="hero container" id="home">
+        <div class="hero-text" style="flex:1;min-width:280px;">
+          <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
+          <p class="subtitle">Advisor Indipendente | Business Angel | Commercialista</p>
+          <a class="cta" href="#contatti">Prenota una call</a>
+        </div>
+        <div class="hero-image" style="flex:1;min-width:280px;text-align:center;">
+          <img src="Portrait.jpg" alt="Alessandro Immobile Molaro">
+        </div>
+      </section>
     </div>
-    <div class="hero-image" style="flex:1;min-width:280px;text-align:center;">
-      <img src="Portrait.jpg" alt="Alessandro Immobile Molaro">
-    </div>
-  </section>
-</div>
-
 
     <section id="chi-sono">
       <div class="container">
@@ -132,26 +108,11 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
       <div class="container">
         <h2>Servizi</h2>
         <div class="grid cols-2">
-          <div class="card">
-            <h3>Consulenza strategica e direzionale</h3>
-            <p class="muted">Affianco imprenditori, CEO e stakeholder nella progettazione di modelli organizzativi, strategici e di controllo.</p>
-          </div>
-          <div class="card">
-            <h3>Startup &amp; Venture Building</h3>
-            <p class="muted">Supporto la validazione del modello di business, la raccolta capitali e la costruzione di modelli scalabili.</p>
-          </div>
-          <div class="card">
-            <h3>Finanza alternativa e fundraising</h3>
-            <p class="muted">Progetto modelli di funding con strumenti come SAFE, SFP e equity crowdfunding.</p>
-          </div>
-          <div class="card">
-            <h3>Operazioni societarie e straordinarie</h3>
-            <p class="muted">Gestisco operazioni di M&amp;A, valutazioni di aziende e startup, strutture di governance con statuti innovativi e patti parasociali</p>
-          </div>
-          <div class="card">
-            <h3>Digital CFO &amp; Trasformazione AFC</h3>
-            <p class="muted">Accompagno la digitalizzazione dei processi amministrativi e finanziari delle PMI.</p>
-          </div>
+          <div class="card"><h3>Consulenza strategica e direzionale</h3><p class="muted">Affianco imprenditori, CEO e stakeholder nella progettazione di modelli organizzativi, strategici e di controllo.</p></div>
+          <div class="card"><h3>Startup &amp; Venture Building</h3><p class="muted">Supporto la validazione del modello di business, la raccolta capitali e la costruzione di modelli scalabili.</p></div>
+          <div class="card"><h3>Finanza alternativa e fundraising</h3><p class="muted">Progetto modelli di funding con strumenti come SAFE, SFP e equity crowdfunding.</p></div>
+          <div class="card"><h3>Operazioni societarie e straordinarie</h3><p class="muted">Gestisco operazioni di M&amp;A, valutazioni di aziende e startup, strutture di governance con statuti innovativi e patti parasociali</p></div>
+          <div class="card"><h3>Digital CFO &amp; Trasformazione AFC</h3><p class="muted">Accompagno la digitalizzazione dei processi amministrativi e finanziari delle PMI.</p></div>
         </div>
       </div>
     </section>
@@ -203,18 +164,9 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
       <div class="container">
         <h2>Blog / Rubriche</h2>
         <div class="grid cols-2">
-          <div class="card">
-            <h3>Funding Talks</h3>
-            <p class="muted">Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor‑oriented.</p>
-          </div>
-          <div class="card">
-            <h3>Open Innovation</h3>
-            <p class="muted">Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
-          </div>
-          <div class="card">
-            <h3>Inside Venture</h3>
-            <p class="muted">Uno sguardo operativo su venture building, processi di validazione e startup operations.</p>
-          </div>
+          <div class="card"><h3>Funding Talks</h3><p class="muted">Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor‑oriented.</p></div>
+          <div class="card"><h3>Open Innovation</h3><p class="muted">Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p></div>
+          <div class="card"><h3>Inside Venture</h3><p class="muted">Uno sguardo operativo su venture building, processi di validazione e startup operations.</p></div>
         </div>
       </div>
     </section>
@@ -222,15 +174,13 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
     <section id="contatti">
       <div class="container">
         <h2>Contatti</h2>
-        
-<form action="https://formspree.io/f/xvgqdbjn" method="POST" style="margin-top:12px">
-  <input type="text" name="nome" placeholder="Nome" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
-  <input type="text" name="cognome" placeholder="Cognome" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
-  <input type="email" name="email" placeholder="Email" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
-  <textarea name="messaggio" placeholder="Il tuo messaggio" required style="padding:10px; margin-bottom:8px; width:100%; height:120px; border:1px solid #ccc; border-radius:6px;"></textarea>
-  <button type="submit" style="padding:10px 15px; border:none; background:#0d0d0d; color:#fff; border-radius:6px;">Invia</button>
-</form>
-
+        <form action="https://formspree.io/f/xvgqdbjn" method="POST" style="margin-top:12px">
+          <input type="text" name="nome" placeholder="Nome" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
+          <input type="text" name="cognome" placeholder="Cognome" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
+          <input type="email" name="email" placeholder="Email" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
+          <textarea name="messaggio" placeholder="Il tuo messaggio" required style="padding:10px; margin-bottom:8px; width:100%; height:120px; border:1px solid #ccc; border-radius:6px;"></textarea>
+          <button type="submit" style="padding:10px 15px; border:none; background:#0d0d0d; color:#fff; border-radius:6px;">Invia</button>
+        </form>
         <p><strong>Base</strong>: Torino, Italia — disponibile anche per incarichi da remoto e internazionali</p>
         <p><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/alessandroimmobile" rel="noopener" target="_blank">/alessandroimmobile</a></p>
       </div>
@@ -238,16 +188,24 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
   </main>
 
   <footer>
-    <div class="container" style="text-align:center;">
-      <div style="margin-bottom:10px;">
-        <a class="cta" href="#contatti">Prenota una call</a>
-      </div>
-      © <span id="year"></span> Alessandro Immobile Molaro — Tutti i diritti riservati
+    <div class="container">
+      <a class="cta" href="#contatti">Prenota una call</a>
+      <div style="margin-top:8px;color:var(--muted);font-size:14px;">© <span id="year"></span> Alessandro Immobile Molaro — Tutti i diritti riservati</div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script>
+  // Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile hamburger
+  const header = document.getElementById('site-header');
+  const btn = header.querySelector('.nav-toggle');
+  btn.addEventListener('click', () => {
+    const open = header.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+  });
+</script>
 </body>
 </html>
