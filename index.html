@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alessandro Immobile Molaro — Advisor, Business Angel, Commercialista</title>
   <meta name="description" content="Abilito crescita e innovazione nei processi di finanza, impresa e capitale. Advisor indipendente, Business Angel e Dottore Commercialista.">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Elegant combo: Cormorant Garamond (headings) + Lora (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --navy:#0A2540;
@@ -19,80 +21,88 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:#fff;color:#0e0e0e;line-height:1.7;font-family:'Open Sans',Arial,sans-serif}
-    h1,h2,h3{font-family:'Lora',serif;color:var(--navy);margin-top:0}
+    body{
+      margin:0;background:#fff;color:#0f1419;line-height:1.75;
+      font-family:'Lora', Georgia, 'Times New Roman', serif;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    /* Headings, brand e CTA con Cormorant Garamond */
+    h1,h2,h3,.brand,.cta{font-family:'Cormorant Garamond', serif;color:var(--navy);}
+    h1,h2,h3{margin-top:0}
     a{color:inherit;text-decoration:none}
 
-    /* Generic container that guarantees lateral padding on ALL screens */
-    .container{
-      max-width:var(--maxw);
-      margin-inline:auto;
-      padding-inline:var(--gutter-desktop);
-    }
-    @media (max-width: 992px){
-      .container{padding-inline:var(--gutter-mobile);}
-    }
-    /* Safe-area for devices with notch */
+    /* Container con gutter coerente e safe-area */
+    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter-desktop)}
+    @media (max-width:992px){.container{padding-inline:var(--gutter-mobile)}}
     @supports (padding: max(0px)){
-      @media (max-width: 992px){
-        .container{padding-left:max(var(--gutter-mobile),env(safe-area-inset-left));padding-right:max(var(--gutter-mobile),env(safe-area-inset-right));}
+      @media (max-width:992px){
+        .container{
+          padding-left:max(var(--gutter-mobile),env(safe-area-inset-left));
+          padding-right:max(var(--gutter-mobile),env(safe-area-inset-right));
+        }
       }
     }
 
-    /* Header */
+    /* Header + menu */
     header{
       position:sticky;top:0;background:rgba(255,255,255,.94);
       backdrop-filter:saturate(160%) blur(10px);
       border-bottom:1px solid #eee;z-index:1000;
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
-    .brand{font-weight:700;letter-spacing:.3px;color:var(--navy);white-space:nowrap}
+    .brand{font-weight:600;letter-spacing:.2px;white-space:nowrap}
     .menu{display:flex;gap:24px;font-size:15px}
     .menu a{opacity:.85}
     .menu a:hover{opacity:1;border-bottom:2px solid var(--gold)}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px 8px}
     .nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;border-radius:2px}
-
-    /* Breakpoint for hamburger */
-    @media (max-width: 992px){
-      .brand{font-size:16px}
+    @media (max-width:992px){
+      .brand{font-size:18px}
       .menu{
-        display:none;position:absolute;left:0;right:0;top:100%;
-        background:#fff;border-bottom:1px solid #eee;
-        box-shadow:0 10px 20px rgba(10,37,64,.08);
-        padding:10px var(--gutter-mobile);
-        gap:12px;z-index:900;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;
+        display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid #eee;
+        box-shadow:0 10px 20px rgba(10,37,64,.08);padding:10px var(--gutter-mobile);
+        gap:12px;z-index:900;overflow-x:auto;white-space:nowrap;
       }
       header.open .menu{display:flex}
-      .menu a{display:inline-block;padding:8px 6px;font-size:16px;white-space:nowrap}
+      .menu a{display:inline-block;padding:8px 6px;font-size:16px}
       .nav-toggle{display:block}
     }
 
     /* Hero */
     .hero-wrap{background:linear-gradient(180deg,#F4F7FB 0%,#FFFFFF 60%)}
-    .hero{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-block:80px 56px}
-    .hero h1{font-size:48px;line-height:1.15;margin-bottom:14px}
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-block:84px 60px}
+    h1{
+      font-size:52px;line-height:1.12;letter-spacing:.2px;
+      font-weight:600;
+    }
     .hero .subtitle{font-size:18px;color:var(--muted);margin:0 0 18px}
-    .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--gold);color:#fff;box-shadow:0 8px 18px rgba(10,37,64,.15)}
-    .cta:hover{filter:brightness(1.05)}
-    .hero-image img{max-width:100%;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+    .cta{
+      display:inline-block;padding:12px 22px;border-radius:999px;background:var(--gold);color:#fff;
+      letter-spacing:.3px;box-shadow:0 8px 18px rgba(10,37,64,.15)
+    }
+    .cta:hover{filter:brightness(1.06)}
+    .hero-image img{max-width:100%;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.18)}
 
+    /* Sections */
     section{padding-block:64px;border-top:1px solid #eee}
     section.alt{background:#FAFAFA}
     .grid{display:grid;gap:20px}
     .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(10,37,64,.05)}
+    .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(10,37,64,.06)}
 
     footer{padding-block:28px;border-top:1px solid #eee;color:var(--muted);font-size:14px;text-align:center}
     footer .cta{background:var(--gold);color:#fff}
 
-    @media (max-width: 992px){
-      .hero{flex-direction:column;padding-top:56px}
-      .hero h1{font-size:36px}
+    /* Responsive */
+    @media (max-width:992px){
+      .hero{flex-direction:column;padding-top:60px}
+      h1{font-size:40px}
       .cols-2{grid-template-columns:1fr}
     }
-    @media (max-width: 420px){
-      .hero h1{font-size:32px}
+    @media (max-width:420px){
+      h1{font-size:36px}
       .hero .subtitle{font-size:16px}
     }
   </style>
@@ -133,7 +143,7 @@
     <section id="chi-sono">
       <div class="container">
         <h2>Chi sono</h2>
-        <p>Sono un Dottore Commercialista, advisor indipendente e business angel. Da oltre 15 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili. Mi occupo di innovazione nei processi di finanza e funding, accompagnando imprenditori e team nella raccolta di capitali, nell'organizzazione dei processi e nella trasformazione digitale della funzione amministrativa e finanziaria.</p>
+        <p>Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili. Mi occupo di innovazione nei processi di finanza e funding, accompagnando imprenditori e team nella raccolta di capitali, nell'organizzazione dei processi e nella trasformazione digitale della funzione amministrativa e finanziaria.</p>
       </div>
     </section>
 
@@ -158,7 +168,7 @@
           <li>Operazioni societarie, valutazioni aziendali e M&amp;A</li>
           <li>Strategia e controllo di gestione</li>
           <li>Digitalizzazione della funzione AFC</li>
-          <li>Open Innovation e Venture Governance</li>
+          <li>Open Innovation e Corporate Venture Building</li>
           <li>Investor readiness &amp; cap table design</li>
           <li>Gestione di progetti complessi e team cross-funzionali</li>
         </ul>
@@ -177,18 +187,6 @@
           <li><strong>CFO</strong> @ Guanxi</li>
           <li><strong>Presidente CdA / Chairman &amp; CFO</strong> @ Polo GGB / Netgenomics</li>
           <li><strong>Senior Consultant</strong> @ Accenture, HMO 2.0, deVoto (Pre‑2017)</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="formazione">
-      <div class="container">
-        <h2>Formazione</h2>
-        <ul>
-          <li>MBA in Finanza – SAA Università di Torino</li>
-          <li>Laurea in Economia – Università degli Studi di Napoli ‘Parthenope’</li>
-          <li>Dottore Commercialista (ODCEC Torino)</li>
-          <li>Revisore Legale dei Conti (MEF)</li>
         </ul>
       </div>
     </section>
@@ -212,7 +210,7 @@
           <input type="text" name="cognome" placeholder="Cognome" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
           <input type="email" name="email" placeholder="Email" required style="padding:10px; margin-bottom:8px; width:100%; border:1px solid #ccc; border-radius:6px;">
           <textarea name="messaggio" placeholder="Il tuo messaggio" required style="padding:10px; margin-bottom:8px; width:100%; height:120px; border:1px solid #ccc; border-radius:6px;"></textarea>
-          <button type="submit" style="padding:10px 15px; border:none; background:#0d0d0d; color:#fff; border-radius:6px;">Invia</button>
+          <button type="submit" class="cta" style="border:none">Invia</button>
         </form>
         <p><strong>Base</strong>: Torino, Italia — disponibile anche per incarichi da remoto e internazionali</p>
         <p><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/alessandroimmobile" rel="noopener" target="_blank">/alessandroimmobile</a></p>
@@ -228,25 +226,20 @@
   </footer>
 
   <script>
-    // Year
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hamburger open/close
+    // Hamburger behavior
     const headerEl = document.getElementById('site-header');
     const toggleBtn = headerEl.querySelector('.nav-toggle');
     const links = document.querySelectorAll('#primary-menu a');
-
     toggleBtn.addEventListener('click', () => {
       const isOpen = headerEl.classList.toggle('open');
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       toggleBtn.setAttribute('aria-label', isOpen ? 'Chiudi il menu' : 'Apri il menu');
     });
-
-    // Chiudi al click su una voce o con ESC
     links.forEach(a => a.addEventListener('click', () => headerEl.classList.remove('open')));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') headerEl.classList.remove('open');
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') headerEl.classList.remove('open'); });
   </script>
 </body>
 </html>
