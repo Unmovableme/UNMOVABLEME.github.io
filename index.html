@@ -72,6 +72,21 @@ footer{padding:28px 0;border-top:1px solid #eee;color:var(--muted);font-size:14p
   .menu a{ font-size:14px; }
   .hero h1{ font-size:32px; }
 }
+
+/* Mobile refinements (nav + gutters) */
+@media (max-width: 680px){
+  .container{padding:0 16px;}
+  .brand{font-size:16px; white-space:nowrap; line-height:1; letter-spacing:.2px;}
+  .menu{gap:14px; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; max-width:100%;}
+  .menu a{white-space:nowrap; font-size:15px;}
+}
+@media (max-width: 420px){
+  .menu{gap:12px;}
+  .menu a{font-size:14px;}
+  .hero h1{font-size:32px;}
+  .hero .subtitle{font-size:16px;}
+}
+
 </style>
 
 </head>
