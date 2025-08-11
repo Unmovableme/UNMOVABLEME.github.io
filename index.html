@@ -1,143 +1,303 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alessandro Immobile Molaro</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alessandro Immobile Molaro — Advisor, Business Angel, Commercialista</title>
+  <meta name="description" content="Abilito crescita e innovazione nei processi di finanza, impresa e capitale. Advisor Indipendente, Business Angel, Commercialista." />
+
+  <!-- Inter (Bolt-like) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Plausible (privacy-first) — sostituisci il dominio se diverso -->
+  <script defer data-domain="alessandroimmobile.com" src="https://plausible.io/js/script.js"></script>
+
   <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #1a1a1a;
+    :root{
+      --bg:#f7f8fb;
+      --panel:#ffffff;
+      --text:#0f172a;           /* slate-900 */
+      --muted:#475569;          /* slate-600 */
+      --line:#e5e7eb;           /* gray-200 */
+      --brand:#111827;          /* slate-900 for primary CTA */
+      --brand-700:#1f2937;      /* slate-800 hover */
+      --chip:#f3f4f6;           /* gray-100 */
+      --chip-text:#111827;
+      --accent:#2e5bff;         /* nota di colore professionale */
+      --accent-700:#244add;
+      --shadow: 0 10px 20px rgba(2,6,23,.06), 0 2px 6px rgba(2,6,23,.05);
+      --radius: 16px;
     }
-    header {
-      background: #f8f9fa;
-      padding: 2rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
     }
-    header img {
-      max-width: 280px;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:var(--panel);
+      border-bottom:1px solid var(--line);
+      box-shadow: 0 2px 12px rgba(2,6,23,.04);
     }
-    header img:hover {
-      transform: scale(1.02);
+    .nav-inner{
+      max-width:1120px; margin:0 auto; padding:14px 20px;
+      display:flex; align-items:center; gap:18px; justify-content:space-between;
     }
-    .hero-text h1 {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
+    .brand{font-weight:700; letter-spacing:.1px}
+    .menu{display:flex; gap:22px; align-items:center}
+    .menu a{color:var(--muted); font-weight:500}
+    .menu a:hover{color:var(--text)}
+    .cta{
+      background:var(--brand); color:#fff; padding:10px 16px; border-radius:12px; font-weight:600;
+      box-shadow: var(--shadow);
     }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+    .cta:hover{background:var(--brand-700)}
+    .chip{
+      display:inline-block; background:var(--chip); color:var(--chip-text);
+      padding:8px 12px; border-radius:12px; font-weight:600; font-size:.95rem;
     }
-    section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: auto;
+
+    /* Hero */
+    .section{padding:64px 20px}
+    .container{max-width:1120px; margin:0 auto}
+    .hero{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; align-items:center;
     }
-    h2 {
-      margin-bottom: 1rem;
+    .eyebrow{font-size:14px; color:var(--muted); margin-bottom:12px}
+    h1{
+      font-size: clamp(34px, 6vw, 52px);
+      line-height:1.1; margin:0 0 16px 0; letter-spacing:-.02em;
     }
-    .blog-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+    .chips{display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 22px}
+    .lead{color:var(--muted); max-width:56ch; font-size:18px}
+    .actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .btn{padding:12px 18px; border-radius:12px; font-weight:600}
+    .btn.primary{background:var(--brand); color:#fff; box-shadow:var(--shadow)}
+    .btn.primary:hover{background:var(--brand-700)}
+    .btn.secondary{background:var(--panel); border:1px solid var(--line); color:var(--text)}
+    .btn.secondary:hover{border-color:#d1d5db}
+    .hero-media{
+      background:#eef1f6; border:1px solid var(--line); border-radius:var(--radius);
+      padding:12px; box-shadow: var(--shadow);
     }
-    .card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
+    .hero-media img{border-radius:12px}
+
+    /* Sections */
+    h2{
+      font-size: clamp(26px, 4.2vw, 34px);
+      margin:0 0 12px 0; letter-spacing:-.01em
     }
-    .card:hover {
-      transform: translateY(-4px);
+    .sub{color:var(--muted); margin-bottom:22px}
+    .cards{
+      display:grid; grid-template-columns: repeat(2, 1fr); gap:22px;
     }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #f1f1f1;
+    .card{
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+      padding:26px; box-shadow:var(--shadow);
     }
-    .btn-primary {
-      background: #0056b3;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s ease;
+    .card h3{margin:0 0 10px 0; font-size:22px}
+    .card p{margin:0; color:var(--muted)}
+
+    /* Contact */
+    .contact{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:start
     }
-    .btn-primary:hover {
-      background: #004494;
+    .contact form{
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)
+    }
+    label{display:block; font-weight:600; margin:4px 0 8px}
+    input,textarea{
+      width:100%; border:1px solid var(--line); border-radius:12px; padding:12px 14px; font:inherit;
+      background:#fff
+    }
+    textarea{min-height:120px; resize:vertical}
+    .calendar-box{
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)
+    }
+    .calendar-box .note{color:var(--muted); font-size:14px}
+
+    /* Footer */
+    .footer{
+      padding:28px 20px; border-top:1px solid var(--line); color:var(--muted)
+    }
+    .footer-inner{max-width:1120px; margin:0 auto; display:flex; justify-content:space-between; align-items:center}
+
+    /* Micro-animazioni rispettose */
+    @media (prefers-reduced-motion:no-preference){
+      .menu a, .btn, .cta {transition: all .2s ease}
+      .card:hover{transform: translateY(-2px);}
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero, .contact{grid-template-columns: 1fr}
+      .hero-media{order:-1}
+      .cards{grid-template-columns:1fr}
     }
   </style>
-  <script defer data-domain="unmovableme.github.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
-<header>
-  <div class="hero-text">
-    <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
-    <p>Advisor Indipendente | Business Angel | Commercialista</p>
-    <a class="btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank">Prenota una call</a>
-  </div>
-  <img src="Portrait.jpg" alt="Alessandro Immobile Molaro">
-</header>
-
-<section id="chi-sono">
-  <h2>Chi sono</h2>
-  <p>Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
-</section>
-
-<section id="competenze">
-  <h2>Competenze chiave</h2>
-  <ul>
-    <li>Fundraising e finanza alternativa (SAFE, SFP, equity crowdfunding)</li>
-    <li>Operazioni societarie, valutazioni e M&A</li>
-    <li>Strategia e controllo di gestione</li>
-    <li>Innovazione digitale e trasformazione funzione AFC</li>
-    <li>Mentorship startup e governance partecipate</li>
-  </ul>
-</section>
-
-<section id="blog">
-  <h2>Rubriche / Blog</h2>
-  <div class="blog-cards">
-    <div class="card">
-      <h4>Funding Talks</h4>
-      <p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor-oriented.</p>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Alessandro Immobile Molaro</div>
+      <div class="menu">
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#competenze">Competenze</a>
+        <a href="#esperienze">Esperienze</a>
+        <a href="#blog">Blog</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+      <a class="cta" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
     </div>
-    <div class="card">
-      <h4>Open Innovation</h4>
-      <p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
+  </nav>
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container hero">
+      <div>
+        <div class="eyebrow">Advisor Indipendente · Business Angel · Commercialista</div>
+        <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
+        <div class="chips">
+          <span class="chip">Advisor Indipendente</span>
+          <span class="chip">Business Angel</span>
+          <span class="chip">Commercialista</span>
+        </div>
+        <p class="lead">Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+          <a class="btn secondary" href="#servizi">Scopri i servizi</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <!-- Usa il file Portrait.jpg presente nel repo -->
+        <img src="Portrait.jpg" alt="Alessandro Immobile Molaro">
+      </div>
     </div>
-    <div class="card">
-      <h4>Inside Venture</h4>
-      <p>Uno sguardo operativo su venture building, processi di validazione e startup operations.</p>
+  </section>
+
+  <!-- Chi sono -->
+  <section id="chi-sono" class="section">
+    <div class="container">
+      <h2>Chi sono</h2>
+      <p class="sub">Advisor indipendente e Business Angel con focus su finanza per la crescita, innovazione e governace d'impresa.</p>
+      <p class="lead">Aiuto imprenditori e team a definire strategie finanziarie, strutturare round di investimento, disegnare processi decisionali e modelli operativi che scalano. Ho lavorato in contesti corporate e startup- driven: questo mi permette di coniugare visione e disciplina esecutiva.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contatti">
-  <h2>Contattami</h2>
-  <p>Per informazioni o richieste, compila il modulo qui sotto.</p>
-  <form>
-    <label for="name">Nome</label>
-    <input type="text" id="name" name="name" required>
-    <label for="message">Messaggio</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-    <button type="submit" class="btn-primary">Invia</button>
-  </form>
-</section>
+  <!-- Competenze chiave -->
+  <section id="competenze" class="section">
+    <div class="container">
+      <h2>Competenze chiave</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Fundraising e finanza alternativa</h3>
+          <p>Strumenti e processi per SAFE, SFP, equity crowdfunding ed emissioni seed/early stage.</p>
+        </div>
+        <div class="card">
+          <h3>Operazioni societarie</h3>
+          <p>Valutazioni, M&amp;A, governance, patti parasociali, cap table e compliance.</p>
+        </div>
+        <div class="card">
+          <h3>Open Innovation e Corporate Venture Building</h3>
+          <p>Iniziative di innovazione aperta e creazione di nuove venture con le corporate.</p>
+        </div>
+        <div class="card">
+          <h3>Mentorship</h3>
+          <p>Supporto a founder e C-level su strategia, execution, metriche e investor relation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <p>&copy; 2025 Alessandro Immobile Molaro</p>
-</footer>
+  <!-- Rubriche / Blog -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2>Rubriche / Blog</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Funding Talks</h3>
+          <p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor-oriented.</p>
+        </div>
+        <div class="card">
+          <h3>Open Innovation</h3>
+          <p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
+        </div>
+        <div class="card" style="grid-column:1/-1">
+          <h3>Inside Venture</h3>
+          <p>Uno sguardo operativo su venture building, processi di validazione e startup operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Contatti -->
+  <section id="contatti" class="section">
+    <div class="container contact">
+      <div>
+        <h2>Contattami</h2>
+        <p class="sub">Senza esporre la mail: compila il form oppure prenota una call direttamente dal calendario.</p>
+        <form name="contact" method="post" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <div>
+            <label for="nome">Nome e Cognome</label>
+            <input id="nome" name="nome" required>
+          </div>
+          <div style="margin-top:12px">
+            <label for="azienda">Azienda (opz.)</label>
+            <input id="azienda" name="azienda">
+          </div>
+          <div style="margin-top:12px">
+            <label for="messaggio">Messaggio</label>
+            <textarea id="messaggio" name="messaggio" required></textarea>
+          </div>
+          <div class="actions" style="margin-top:14px">
+            <button class="btn primary" type="submit">Invia richiesta</button>
+            <a class="btn secondary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+          </div>
+        </form>
+      </div>
+      <div class="calendar-box">
+        <h3 style="margin-top:0">Prenota una call</h3>
+        <p class="note">Apri il mio Calendario Google in una nuova scheda:</p>
+        <p><a class="btn primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Apri calendario</a></p>
+        <p class="note" style="margin-top:16px">
+          <!-- Per incorporare il calendario direttamente in pagina:
+               1) Apri Google Calendar da browser con l'account desiderato
+               2) Impostazioni &gt; Impostazioni del calendario &gt; Integra calendario
+               3) Copia l'URL "Incorpora" (iframe) e sostituisci qui sotto -->
+          <!-- Esempio:
+          <iframe style="width:100%; height:520px; border:0; border-radius:12px"
+            src="PASTE_IFRAME_SRC" loading="lazy"></iframe> -->
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>&copy; <span id="y"></span> Alessandro Immobile Molaro — Tutti i diritti riservati</div>
+      <div style="display:flex; gap:14px">
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
