@@ -1,261 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alessandro Immobile Molaro</title>
-
-  <!-- Font (stile Bolt) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg: #0b1020;                 /* sfondo pagina */
-      --card: #0f1530;               /* pannelli */
-      --text: #e7ecf4;               /* testo principale */
-      --muted: #adb8cb;              /* testo secondario */
-      --brand: #0ea5e9;              /* accenti (nota colore) */
-      --brand-600:#0284c7;
-      --brand-700:#0369a1;
-      --ring: rgba(14,165,233,.25);
-
-      --container: 1200px;
-      --radius: 18px;
-
-      --h1: clamp(36px, 6vw, 68px);
-      --gap-section-top: 28px;       /* spazio ridotto tra hero e sezione successiva */
-      --gap-section: 56px;
-      --btn-font: 16px;              /* dimensione uniforme dei bottoni */
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 10% -10%, #152040 30%, transparent 60%) no-repeat,
-                  radial-gradient(1000px 700px at 100% 10%, #18224a 25%, transparent 55%) no-repeat,
-                  var(--bg);
-      line-height:1.55;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto;border-radius:12px;display:block}
-
-    .container{max-width:var(--container);margin-inline:auto;padding:28px 20px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(150%) blur(10px)}
-    .bar{display:flex;gap:16px;align-items:center;justify-content:space-between;
-         background:rgba(10,14,30,.55);border:1px solid rgba(255,255,255,.06);
-         border-radius:16px;padding:10px 14px}
-    .brand{font-weight:700;letter-spacing:.2px}
-    nav a{color:var(--muted);font-weight:500}
-    nav{display:flex;gap:18px;align-items:center}
-    .btn{
-      --bgc: #0b1228;
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.08);
-      background:var(--bgc); color:var(--text); font-size:var(--btn-font); font-weight:600;
-      box-shadow:0 1px 0 rgba(255,255,255,.05) inset, 0 0 0 0 var(--ring);
-      transition: transform .12s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn:focus-visible{outline:0;box-shadow:0 0 0 6px var(--ring)}
-    .btn-primary{--bgc:linear-gradient(180deg, var(--brand), var(--brand-600));}
-    .btn-primary:hover{--bgc:linear-gradient(180deg, var(--brand-600), var(--brand-700));}
-    .btn-neutral{--bgc:#0c1430;border-color:rgba(255,255,255,.12)}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.08);
-      background:#0c1430;color:#cfe2ff;font-weight:600
-    }
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
-    .hero h1{
-      margin:0 0 18px 0;font-size:var(--h1);line-height:1.02;letter-spacing:-.6px;
-      text-wrap:balance;text-shadow:0 1px 0 rgba(255,255,255,.06)
-    }
-    .hero p{color:var(--muted);font-size:18px}
-    .hero .tags{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 18px}
-    .hero .cta{display:flex;gap:16px;align-items:center;margin-top:24px}
-    .photo{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:20px;padding:14px
-    }
-
-    section{margin-top:var(--gap-section-top)}
-    .section{margin-top:var(--gap-section)}
-    .section h2{font-size: clamp(26px,3vw,38px);margin:0 0 14px 0}
-    .muted{color:var(--muted)}
-
-    /* Chi sono */
-    .lead{font-size:20px;color:#c9d4e8;max-width:78ch}
-
-    /* Competenze */
-    .list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .list li{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;
-             padding:16px}
-
-    /* Blog / Rubriche */
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .card{
-      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;
-      padding:20px 22px
-    }
-    .card h3{margin:0 0 10px 0;font-size:20px}
-    .card p{margin:0;color:var(--muted)}
-
-    /* Contatti */
-    .contact{
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.0));
-      border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px
-    }
-    form{display:grid;gap:14px}
-    label{font-weight:600}
-    input, textarea{
-      width:100%;padding:14px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
-      background:#0d1738;color:var(--text);font-size:16px
-    }
-    textarea{min-height:180px;resize:vertical}
-    .form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
-
-    /* footer */
-    footer{color:#9fb0cc}
-    .small{font-size:14px}
-
-    /* responsive */
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr;gap:20px}
-      .photo{order:-1}
-      .grid{grid-template-columns:1fr}
-      .list{grid-template-columns:1fr}
-      nav{display:none}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alessandro Immobile Molaro</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* sfondo chiaro */
+            color: #111;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .tags span {
+            display: inline-block;
+            background-color: #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .buttons a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #111;
+            color: white;
+        }
+        .hero img {
+            max-width: 350px;
+            border-radius: 0.75rem;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div><strong>Alessandro Immobile Molaro</strong></div>
+        <nav>
+            <a href="#chi-sono">Chi sono</a>
+            <a href="#competenze">Competenze</a>
+            <a href="#blog">Rubriche / Blog</a>
+            <a href="#contatti">Contatti</a>
+        </nav>
+        <a href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" class="btn-primary">Prenota una call</a>
+    </header>
 
-  <!-- HEADER -->
-  <header class="container">
-    <div class="bar">
-      <div class="brand">Alessandro Immobile Molaro</div>
-      <nav>
-        <a href="#chi-sono">Chi sono</a>
-        <a href="#competenze">Competenze</a>
-        <a href="#rubriche">Rubriche / Blog</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-      <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div>
-        <div class="muted" style="margin-bottom:10px">Advisor Indipendente · Business Angel · Commercialista</div>
-        <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
-
-        <div class="tags">
-          <span class="chip">Advisor Indipendente</span>
-          <span class="chip">Business Angel</span>
-          <span class="chip">Commercialista</span>
+    <section class="hero">
+        <div class="hero-text">
+            <div class="tags">
+                <span>Advisor Indipendente</span>
+                <span>Business Angel</span>
+                <span>Commercialista</span>
+            </div>
+            <h1>Abilito crescita e innovazione nei processi di finanza, impresa e capitale.</h1>
+            <p>Sono un Dottore Commercialista, Advisor indipendente e Business Angel. 
+               Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
+            <div class="buttons">
+                <a href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" class="btn-primary">Prenota una call</a>
+            </div>
         </div>
-
-        <p class="lead">Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
-
-        <div class="cta">
-          <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+        <div class="hero-image">
+            <img src="Portrait.jpg" alt="Foto Alessandro Immobile Molaro">
         </div>
-      </div>
-
-      <!-- Foto a destra -->
-      <div class="photo">
-        <img src="Portrait.jpg" alt="Alessandro Immobile Molaro" />
-      </div>
     </section>
-
-    <!-- CHI SONO (spazio ridotto) -->
-    <section id="chi-sono" class="section" style="margin-top: var(--gap-section-top);">
-      <h2>Chi sono</h2>
-      <p class="lead">Advisor indipendente e Business Angel con focus su finanza per la crescita, innovazione e governance d’impresa.</p>
-      <p class="lead" style="margin-top:10px">Aiuto imprenditori e team a definire strategie finanziarie, strutturare round di investimento, disegnare processi decisionali e modelli operativi che scalano. Ho lavorato in contesti corporate e startup‑driven: questo mi permette di coniugare visione e disciplina esecutiva.</p>
-    </section>
-
-    <!-- COMPETENZE -->
-    <section id="competenze" class="section">
-      <h2>Competenze chiave</h2>
-      <ul class="list">
-        <li>Fundraising e finanza alternativa (SAFE, SFP, equity crowdfunding)</li>
-        <li>Operazioni societarie, valutazioni e M&amp;A</li>
-        <li>Open Innovation e Corporate Venture Building</li>
-        <li>Mentorship, advisory strategico e governance (PMI / board)</li>
-      </ul>
-    </section>
-
-    <!-- RUBRICHE / BLOG -->
-    <section id="rubriche" class="section">
-      <h2>Rubriche / Blog</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Funding Talks</h3>
-          <p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor‑oriented.</p>
-        </article>
-        <article class="card">
-          <h3>Open Innovation</h3>
-          <p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
-        </article>
-        <article class="card">
-          <h3>Inside Venture</h3>
-          <p>Uno sguardo operativo su venture building, validazione e startup operations.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTATTI (solo form) -->
-    <section id="contatti" class="section">
-      <h2>Contattami</h2>
-      <p class="muted" style="margin:8px 0 16px">Senza esporre la mail: compila il form oppure prenota una call dal pulsante qui sotto.</p>
-
-      <div class="contact">
-        <!-- Form statico (placeholder). Per ricevere messaggi servirebbe un backend o servizio esterno. -->
-        <form>
-          <div>
-            <label for="name">Nome e Cognome</label>
-            <input id="name" name="name" required />
-          </div>
-
-          <div>
-            <label for="company">Azienda (opz.)</label>
-            <input id="company" name="company" />
-          </div>
-
-          <div>
-            <label for="message">Messaggio</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="button" class="btn btn-primary">Invia richiesta</button>
-            <a class="btn btn-neutral" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
-          </div>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="container small" style="margin-top:72px">
-    © <span id="y"></span> Alessandro Immobile Molaro — Tutti i diritti riservati
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
