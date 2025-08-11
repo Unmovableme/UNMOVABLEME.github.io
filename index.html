@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Alessandro Immobile Molaro</title>
 
-  <!-- Font (stile Bolt) -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* PALETTE CHIARA */
       --bg: #f6f7fb;
       --card: #ffffff;
       --text: #0f172a;
@@ -19,16 +18,13 @@
       --brand-600:#1976d2;
       --brand-700:#155fa8;
       --ring: rgba(30,136,229,.18);
-
       --container: 1200px;
       --radius: 18px;
-
       --h1: clamp(36px, 6vw, 68px);
-      --gap-section-top: 28px;     /* spazio ridotto tra hero e sezione seguente */
+      --gap-section-top: 28px;
       --gap-section: 56px;
-      --btn-font: 16px;            /* dimensione uniforme dei bottoni */
+      --btn-font: 16px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -37,13 +33,9 @@
       color:var(--text);
       background: var(--bg);
       line-height:1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;border-radius:12px;display:block}
-
     .container{max-width:var(--container);margin-inline:auto;padding:28px 20px}
 
     /* Header */
@@ -67,11 +59,7 @@
     .btn:focus-visible{outline:0;box-shadow:0 0 0 6px var(--ring)}
     .btn-primary{--bgc:linear-gradient(180deg, var(--brand), var(--brand-600));}
     .btn-primary:hover{--bgc:linear-gradient(180deg, var(--brand-600), var(--brand-700));}
-    .btn-neutral{
-      --bgc:#ffffff;color:var(--text);
-      border-color:rgba(15,23,42,.15);
-    }
-
+    .btn-neutral{--bgc:#ffffff;color:var(--text);border-color:rgba(15,23,42,.15);}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       padding:10px 14px;border-radius:999px;border:1px solid rgba(15,23,42,.12);
@@ -80,22 +68,11 @@
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
-    .hero h1{
-      margin:0 0 18px 0;
-      /* Ridotta di ~18px rispetto a var(--h1), come richiesto negli step */
-      font-size: calc(var(--h1) - 18px);
-      line-height:1.02;letter-spacing:-.6px;
-      text-wrap:balance;
-    }
+    .hero h1{margin:0 0 18px 0;font-size: calc(var(--h1) - 18px);line-height:1.02;}
     .hero p{color:var(--muted);font-size:18px}
     .hero .tags{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 18px}
     .hero .cta{display:flex;gap:16px;align-items:center;margin-top:24px}
-    .photo{
-      background:#fff;
-      border:1px solid rgba(15,23,42,.12);
-      border-radius:20px;padding:14px;
-      box-shadow: 0 10px 30px rgba(15,23,42,.08);
-    }
+    .photo{background:#fff;border:1px solid rgba(15,23,42,.12);border-radius:20px;padding:14px}
 
     section{margin-top:var(--gap-section-top)}
     .section{margin-top:var(--gap-section)}
@@ -107,24 +84,16 @@
 
     /* Competenze */
     .list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .list li{background:var(--card);border:1px solid rgba(15,23,42,.12);border-radius:14px;
-             padding:16px; box-shadow: 0 4px 12px rgba(15,23,42,.04)}
+    .list li{background:var(--card);border:1px solid rgba(15,23,42,.12);border-radius:14px;padding:16px}
 
-    /* Blog / Rubriche */
+    /* Blog */
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .card{
-      background:var(--card);border:1px solid rgba(15,23,42,.12);border-radius:16px;
-      padding:20px 22px; box-shadow: 0 6px 18px rgba(15,23,42,.05)
-    }
+    .card{background:var(--card);border:1px solid rgba(15,23,42,.12);border-radius:16px;padding:20px 22px}
     .card h3{margin:0 0 10px 0;font-size:20px}
     .card p{margin:0;color:var(--muted)}
 
     /* Contatti */
-    .contact{
-      background:var(--card);
-      border:1px solid rgba(15,23,42,.12);border-radius:18px;padding:18px;
-      box-shadow: 0 8px 22px rgba(15,23,42,.06)
-    }
+    .contact{background:var(--card);border:1px solid rgba(15,23,42,.12);border-radius:18px;padding:18px}
     form{display:grid;gap:14px}
     label{font-weight:700;color:#2b3a53}
     input, textarea{
@@ -134,11 +103,25 @@
     textarea{min-height:180px;resize:vertical}
     .form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
 
-    /* footer */
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      display: none;
+      z-index: 9999;
+    }
+    #toast.success { background-color: #2e7d32; }
+    #toast.error { background-color: #c62828; }
+
     footer{color:#5a6e8d}
     .small{font-size:14px}
 
-    /* responsive */
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr;gap:20px}
       .photo{order:-1}
@@ -150,159 +133,121 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="container">
-    <div class="bar">
-      <div class="brand">Alessandro Immobile Molaro</div>
-      <nav>
-        <a href="#chi-sono">Chi sono</a>
-        <a href="#competenze">Competenze</a>
-        <a href="#rubriche">Rubriche / Blog</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-      <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+<header class="container">
+  <div class="bar">
+    <div class="brand">Alessandro Immobile Molaro</div>
+    <nav>
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#competenze">Competenze</a>
+      <a href="#rubriche">Rubriche / Blog</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div>
+      <h1>Sviluppo modelli strategici che abilitano crescita, funding e innovazione aziendale.</h1>
+      <div class="tags">
+        <span class="chip">Advisor Indipendente</span>
+        <span class="chip">Business Angel</span>
+        <span class="chip">Commercialista</span>
+      </div>
+      <p class="lead">Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
+      </div>
     </div>
-  </header>
+    <div class="photo">
+      <img src="Portrait.jpg" alt="Alessandro Immobile Molaro" />
+    </div>
+  </section>
 
-  <main class="container">
+  <!-- CHI SONO -->
+  <section id="chi-sono" class="section" style="margin-top: var(--gap-section-top);">
+    <h2>Chi sono</h2>
+    <p class="lead">Advisor indipendente e Business Angel con focus su finanza per la crescita, innovazione e governance d’impresa.</p>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div>
-        <h1>Sviluppo modelli strategici che abilitano crescita, funding e innovazione aziendale.</h1>
+  <!-- COMPETENZE -->
+  <section id="competenze" class="section">
+    <h2>Competenze chiave</h2>
+    <ul class="list">
+      <li>Fundraising e finanza alternativa (SAFE, SFP, equity crowdfunding)</li>
+      <li>Operazioni societarie, valutazioni e M&amp;A</li>
+      <li>Open Innovation e Corporate Venture Building</li>
+      <li>Mentorship, advisory strategico e governance (PMI / board)</li>
+    </ul>
+  </section>
 
-        <div class="tags">
-          <span class="chip">Advisor Indipendente</span>
-          <span class="chip">Business Angel</span>
-          <span class="chip">Commercialista</span>
-        </div>
+  <!-- RUBRICHE -->
+  <section id="rubriche" class="section">
+    <h2>Rubriche / Blog</h2>
+    <div class="grid">
+      <article class="card"><h3>Funding Talks</h3><p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor-oriented.</p></article>
+      <article class="card"><h3>Open Innovation</h3><p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p></article>
+      <article class="card"><h3>Inside Venture</h3><p>Uno sguardo operativo su venture building, validazione e startup operations.</p></article>
+    </div>
+  </section>
 
-        <p class="lead">Sono un Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
+  <!-- CONTATTI -->
+  <section id="contatti" class="section">
+    <h2>Contattami</h2>
+    <div class="contact">
+      <form id="contact-form" action="https://formspree.io/f/xvgqdbjn" method="POST">
+        <div><label for="first">Nome</label><input id="first" name="first" required /></div>
+        <div><label for="last">Cognome</label><input id="last" name="last" required /></div>
+        <div><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+        <div><label for="message">Il tuo messaggio</label><textarea id="message" name="message" required></textarea></div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="form-actions"><button class="btn btn-primary" type="submit">Invia</button></div>
+      </form>
+    </div>
+  </section>
 
-        <div class="cta">
-          <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
-        </div>
-      </div>
+</main>
 
-      <!-- Foto a destra -->
-      <div class="photo">
-        <img src="Portrait.jpg" alt="Alessandro Immobile Molaro" />
-      </div>
-    </section>
+<footer class="container small" style="margin-top:72px">
+  © <span id="y"></span> Alessandro Immobile Molaro — Tutti i diritti riservati
+</footer>
 
-    <!-- CHI SONO -->
-    <section id="chi-sono" class="section" style="margin-top: var(--gap-section-top);">
-      <h2>Chi sono</h2>
-      <p class="lead">Advisor indipendente e Business Angel con focus su finanza per la crescita, innovazione e governance d’impresa.</p>
-      <p class="lead" style="margin-top:10px">Aiuto imprenditori e team a definire strategie finanziarie, strutturare round di investimento, disegnare processi decisionali e modelli operativi che scalano. Ho lavorato in contesti corporate e startup‑driven: questo mi permette di coniugare visione e disciplina esecutiva.</p>
-    </section>
+<div id="toast"></div>
 
-    <!-- COMPETENZE -->
-    <section id="competenze" class="section">
-      <h2>Competenze chiave</h2>
-      <ul class="list">
-        <li>Fundraising e finanza alternativa (SAFE, SFP, equity crowdfunding)</li>
-        <li>Operazioni societarie, valutazioni e M&amp;A</li>
-        <li>Open Innovation e Corporate Venture Building</li>
-        <li>Mentorship, advisory strategico e governance (PMI / board)</li>
-      </ul>
-    </section>
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+const form = document.getElementById('contact-form');
+const toast = document.getElementById('toast');
 
-    <!-- RUBRICHE / BLOG -->
-    <section id="rubriche" class="section">
-      <h2>Rubriche / Blog</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Funding Talks</h3>
-          <p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor‑oriented.</p>
-        </article>
-        <article class="card">
-          <h3>Open Innovation</h3>
-          <p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
-        </article>
-        <article class="card">
-          <h3>Inside Venture</h3>
-          <p>Uno sguardo operativo su venture building, validazione e startup operations.</p>
-        </article>
-      </div>
-    </section>
+function showToast(message, type) {
+  toast.textContent = message;
+  toast.className = type;
+  toast.style.display = 'block';
+  setTimeout(() => { toast.style.display = 'none'; }, 4000);
+}
 
-    <!-- CONTATTI (Formspree) -->
-    <section id="contatti" class="section">
-      <h2>Contattami</h2>
-      <p class="muted" style="margin:8px 0 16px">Senza esporre la mail: compila il form oppure prenota una call dal pulsante nel menu.</p>
-
-      <div class="contact">
-        <form id="contact-form" action="https://formspree.io/f/xvgqdbjn" method="POST">
-          <div>
-            <label for="first">Nome</label>
-            <input id="first" name="first" required />
-          </div>
-
-          <div>
-            <label for="last">Cognome</label>
-            <input id="last" name="last" required />
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-          </div>
-
-          <div>
-            <label for="message">Il tuo messaggio</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-
-          <!-- honeypot anti‑bot -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <!-- risposta di successo/errore -->
-          <p id="form-msg" class="muted" style="margin:4px 0 0"></p>
-
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Invia</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="container small" style="margin-top:72px">
-    © <span id="y"></span> Alessandro Immobile Molaro — Tutti i diritti riservati
-  </footer>
-
-  <script>
-    // anno nel footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // invio AJAX a Formspree con messaggio inline
-    const form = document.getElementById('contact-form');
-    const msg  = document.getElementById('form-msg');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = 'Invio in corso…';
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data
-        });
-
-        if (res.ok) {
-          form.reset();
-          msg.textContent = 'Grazie! Il tuo messaggio è stato inviato correttamente.';
-        } else {
-          msg.textContent = 'Ops, qualcosa non ha funzionato. Riprova più tardi.';
-        }
-      } catch(err) {
-        msg.textContent = 'Connessione non disponibile. Riprova.';
-      }
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
     });
-  </script>
+    if (res.ok) {
+      form.reset();
+      showToast('Grazie! Messaggio inviato ✅', 'success');
+    } else {
+      showToast('Errore nell’invio. Riprova più tardi.', 'error');
+    }
+  } catch {
+    showToast('Connessione assente. Controlla la rete.', 'error');
+  }
+});
+</script>
+
 </body>
 </html>
