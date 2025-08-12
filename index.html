@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alessandro Immobile Molaro</title>
+  <meta name="description" content="Alessandro Immobile Molaro - Consulente strategico specializzato in fundraising, venture building e finanza alternativa per startup e PMI innovative">
+  <title>Alessandro Immobile Molaro | Fundraising & Venture Building</title>
 
   <!-- Font (stile Bolt) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,9 +25,9 @@
       --radius: 18px;
 
       --h1: clamp(36px, 6vw, 68px);
-      --gap-section-top: 28px;     /* spazio ridotto tra hero e sezione seguente */
+      --gap-section-top: 28px;
       --gap-section: 56px;
-      --btn-font: 16px;            /* dimensione uniforme dei bottoni */
+      --btn-font: 16px;
     }
 
     *{box-sizing:border-box}
@@ -82,7 +83,6 @@
     .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
     .hero h1{
       margin:0 0 18px 0;
-      /* Ridotta di ~18px rispetto a var(--h1), come richiesto negli step */
       font-size: calc(var(--h1) - 18px);
       line-height:1.02;letter-spacing:-.6px;
       text-wrap:balance;
@@ -104,6 +104,9 @@
 
     /* Chi sono */
     .lead{font-size:20px;color:#3f4f69;max-width:78ch}
+    .partners{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:24px}
+    .partner-logo{height:40px;opacity:.7;transition:opacity .2s ease}
+    .partner-logo:hover{opacity:1}
 
     /* Competenze */
     .list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -118,6 +121,7 @@
     }
     .card h3{margin:0 0 10px 0;font-size:20px}
     .card p{margin:0;color:var(--muted)}
+    .card .btn{font-size:14px;margin-top:12px}
 
     /* Contatti */
     .contact{
@@ -157,10 +161,10 @@
       <nav>
         <a href="#chi-sono">Chi sono</a>
         <a href="#competenze">Competenze</a>
-        <a href="#rubriche">Rubriche / Blog</a>
+        <a href="#risorse">Risorse</a>
         <a href="#contatti">Contatti</a>
       </nav>
-      <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call gratuita</a>
+      <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call</a>
     </div>
   </header>
 
@@ -169,68 +173,98 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div>
-        <h1>Sviluppo modelli e strategie che abilitano crescita, funding e innovazione in aziende e startup.</h1>
-
+        <h1>Fundraising & Venture Building per Startup e PMI Innovative</h1>
+        
         <div class="tags">
-          <span class="chip">Advisor Indipendente</span>
+          <span class="chip">Consulente Strategico</span>
           <span class="chip">Business Angel</span>
-          <span class="chip">Commercialista</span>
+          <span class="chip">Docente Fundraising</span>
         </div>
 
-        <p class="lead">Dottore Commercialista, Advisor indipendente e Business Angel. Da oltre 25 anni lavoro al fianco di startup, PMI e corporate per costruire modelli di crescita sostenibili e scalabili.</p>
+        <p class="lead">Dottore Commercialista e Advisor con 15+ anni di esperienza in finanza alternativa e crescita aziendale. Aiuto imprenditori e CEO a raccogliere capitali, ridisegnare governance e scalare business con modelli data-driven.</p>
 
         <div class="cta">
-          <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una call gratuita</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" target="_blank" rel="noopener">Prenota una consulenza</a>
+          <a class="btn btn-neutral" href="#risorse">Risorse gratuite</a>
         </div>
       </div>
 
-      <!-- Foto a destra -->
       <div class="photo">
         <img src="Portrait.jpg" alt="Alessandro Immobile Molaro" />
       </div>
     </section>
 
     <!-- CHI SONO -->
-    <section id="chi-sono" class="section" style="margin-top: var(--gap-section-top);">
+    <section id="chi-sono" class="section">
       <h2>Chi sono</h2>
-      <p class="lead">Advisor indipendente e Business Angel con focus su finanza per la crescita, innovazione e governance d’impresa.</p>
-      <p class="lead" style="margin-top:10px">Aiuto imprenditori e team a definire strategie finanziarie, strutturare round di investimento, disegnare processi decisionali e modelli operativi che scalano. Ho lavorato in contesti corporate e startup‑driven: questo mi permette di coniugare visione e disciplina esecutiva.</p>
+      <p class="lead">Advisor indipendente specializzato in finanza per l'innovazione, con un track record dimostrabile:</p>
+      
+      <ul class="list" style="margin-top:24px">
+        <li>Co-fondatore di <strong>P3 Venture</strong> e <strong>Imment Venture Builder</strong></li>
+        <li>Docente di fundraising presso istituzioni internazionali</li>
+        <li>Business Angel con portfolio in startup ad alto potenziale</li>
+        <li>15+ anni di consulenza direzionale per corporate e PMI</li>
+      </ul>
+
+      <div class="partners">
+        <span>Collaborazioni:</span>
+        <!-- Aggiungi qui i logo (o testo) dei partner -->
+        <span class="chip">SAA Torino</span>
+        <span class="chip">Polo GGB</span>
+      </div>
     </section>
 
     <!-- COMPETENZE -->
     <section id="competenze" class="section">
       <h2>Competenze chiave</h2>
       <ul class="list">
-        <li>Fundraising e finanza alternativa (SAFE, SFP, equity crowdfunding)</li>
-        <li>Operazioni societarie, valutazioni e M&amp;A</li>
-        <li>Open Innovation e Corporate Venture Building</li>
-        <li>Mentorship, advisory strategico e governance (PMI / board)</li>
+        <li>
+          <strong>Fundraising strategico</strong><br>
+          SAFE agreement, SFP, equity crowdfunding, investor readiness
+        </li>
+        <li>
+          <strong>Venture Building</strong><br>
+          Validazione modello di business, corporate venture capital, scaling
+        </li>
+        <li>
+          <strong>Operazioni societarie</strong><br>
+          Valutazioni aziendali, M&A, cap table design, governance
+        </li>
+        <li>
+          <strong>Trasformazione digitale</strong><br>
+          Innovazione processi AFC, controllo di gestione, business planning
+        </li>
       </ul>
     </section>
 
-    <!-- RUBRICHE / BLOG -->
-    <section id="rubriche" class="section">
-      <h2>Rubriche / Blog</h2>
+    <!-- RISORSE -->
+    <section id="risorse" class="section">
+      <h2>Risorse gratuite</h2>
+      <p class="muted" style="margin-bottom:20px">Materiali per approfondire i temi di finanza alternativa e crescita aziendale:</p>
+      
       <div class="grid">
         <article class="card">
-          <h3>Funding Talks</h3>
-          <p>Articoli e strumenti per affrontare una raccolta capitali in modo strutturato e investor‑oriented.</p>
+          <h3>Guida Fundraising</h3>
+          <p>3 strumenti di finanza alternativa per startup e PMI innovative.</p>
+          <a href="#" class="btn btn-neutral">Scarica PDF</a>
         </article>
         <article class="card">
-          <h3>Open Innovation</h3>
-          <p>Approfondimenti su innovazione, governance e trasformazione organizzativa nelle PMI.</p>
+          <h3>Template Cap Table</h3>
+          <p>Strumento operativo per gestire la struttura azionaria.</p>
+          <a href="#" class="btn btn-neutral">Scarica Excel</a>
         </article>
         <article class="card">
-          <h3>Inside Venture</h3>
-          <p>Uno sguardo operativo su venture building, validazione e startup operations.</p>
+          <h3>Case Study</h3>
+          <p>Come abbiamo aiutato una biotech a raccogliere €2M in 6 mesi.</p>
+          <a href="#" class="btn btn-neutral">Leggi</a>
         </article>
       </div>
     </section>
 
-    <!-- CONTATTI (Formspree) -->
+    <!-- CONTATTI -->
     <section id="contatti" class="section">
       <h2>Contattami</h2>
-      <p class="muted" style="margin:8px 0 16px">Senza esporre la mail: compila il form oppure prenota una call dal pulsante nel menu.</p>
+      <p class="muted" style="margin:8px 0 16px">Compila il form o prenota direttamente una call strategica:</p>
 
       <div class="contact">
         <form id="contact-form" action="https://formspree.io/f/xvgqdbjn" method="POST">
@@ -254,14 +288,12 @@
             <textarea id="message" name="message" required></textarea>
           </div>
 
-          <!-- honeypot anti‑bot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <!-- risposta di successo/errore -->
           <p id="form-msg" class="muted" style="margin:4px 0 0"></p>
 
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Invia</button>
+            <a href="https://calendar.app.google/uT3w5Jv5twyWz1VE8" class="btn btn-neutral" target="_blank">Prenota call</a>
           </div>
         </form>
       </div>
@@ -274,10 +306,8 @@
   </footer>
 
   <script>
-    // anno nel footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // invio AJAX a Formspree con messaggio inline
     const form = document.getElementById('contact-form');
     const msg  = document.getElementById('form-msg');
 
